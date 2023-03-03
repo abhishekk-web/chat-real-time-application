@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../utils/database');
 
-const User = sequelize.define('group', {
+const Group = sequelize.define('group', {
 
     id: {
         type: Sequelize.INTEGER,
@@ -17,4 +17,4 @@ const User = sequelize.define('group', {
 
 })
 
-module.exports = User;
+module.exports = Group;

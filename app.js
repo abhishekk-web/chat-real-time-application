@@ -14,14 +14,14 @@ const userRoute = require('./routes/user');
 const groupChatRoute = require('./routes/groupChat');
 const makeGroupRoute = require('./routes/makeGroup');
 const chatRoute = require('./routes/chat');
+const addUserRoute = require('./routes/addUser');
 
 // Models
 const User = require('./models/user');
 const Groupchat = require('./models/groupChat');
 const Chat = require('./models/chat');
-// const Group = require('./models/group');
-// const Groupchat = require('./models/groupChat');
-// const Usergroup = require('./models/userGroup');
+const Group = require('./models/makeGroup');
+const Usergroup = require('./models/userGroup');
 
 
 // Associations
@@ -32,8 +32,8 @@ Chat.belongsTo(User);
 User.hasMany(Groupchat);
 Groupchat.belongsTo(User)
 
-// User.belongsToMany(Group,{through:Usergroup});
-// Group.belongsToMany(User,{through:Usergroup});
+User.belongsToMany(Group,{through:Usergroup});
+Group.belongsToMany(User,{through:Usergroup});
 // using the express libraries
 app.use(bodyParser.json({extended: false}));
 app.use(cors(
@@ -49,7 +49,7 @@ app.use("/user", userRoute);
 app.use("/groupchat", groupChatRoute);
 app.use("/group", makeGroupRoute);
 app.use("/chat", chatRoute);
-// app.use("/group-chat", groupChatRoute);
+app.use('/addgroup', addUserRoute);
 
 // we are running our server and database here
 sequelize

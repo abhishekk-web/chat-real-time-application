@@ -2,6 +2,8 @@ const groupNode = document.getElementById("created-group-show");
 const userNode = document.getElementById("list-of-all-contacts");
 const groupChat = document.getElementById("group-chat");
 const normalChat = document.getElementById("normal-chat");
+const adminTrue=document.getElementById('admin-yes')
+const adminFalse=document.getElementById('admin-no')
 
 groupChat.addEventListener("click", groupChats)
 function groupChats(){
@@ -65,6 +67,34 @@ async function showUsers() {
             const childNodes = `<li class="list-group-item">${users.name}<input type="hidden" class="user-id" value=${users.id}></li>`;
             userNode.innerHTML += childNodes;
         })
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
+
+async function addUserToGroup(e){
+
+    try {
+
+        e.preventDefault();
+        const groupName = e.target.grpname.value;
+        const email = e.target.email.value;
+        
+        console.log(groupName);
+
+        const userGroupDetails = {
+            groupName: groupName,
+            email: email,
+            isAdmin:adminTrue.checked === true ? true :false
+        }
+        console.log(userGroupDetails);
+
+        const token = localStorage.getItem("token");
+        const response = await axios.post(`http://localhost:3000/addgroup/adduser`, userGroupDetails, {headers: {"Authorization": token}});
+        console.log(response);
+
     }
     catch(err){
         console.log(err);
