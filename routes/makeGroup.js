@@ -8,4 +8,6 @@ router.post('/makegroup', authController.authenticate, makeGroupController.makeG
 
 router.get('/showgroup', authController.authenticate, makeGroupController.showGroups);
 
+// router.post('/adduser', authController.authenticate, makeGroupController.addUser);
+
 module.exports = router;

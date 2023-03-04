@@ -32,6 +32,8 @@ Chat.belongsTo(User);
 User.hasMany(Groupchat);
 Groupchat.belongsTo(User)
 
+// User.hasMany(Group);
+
 User.belongsToMany(Group,{through:Usergroup});
 Group.belongsToMany(User,{through:Usergroup});
 // using the express libraries
@@ -46,10 +48,11 @@ app.use(cors(
 
 // we are using routes here
 app.use("/user", userRoute);
-app.use("/groupchat", groupChatRoute);
-app.use("/group", makeGroupRoute);
 app.use("/chat", chatRoute);
+app.use("/group", makeGroupRoute);
+app.use("/groupchat", groupChatRoute);
 app.use('/addgroup', addUserRoute);
+
 
 // we are running our server and database here
 sequelize

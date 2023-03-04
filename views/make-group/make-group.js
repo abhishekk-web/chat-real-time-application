@@ -79,13 +79,13 @@ async function addUserToGroup(e){
     try {
 
         e.preventDefault();
-        const groupName = e.target.grpname.value;
+        const name = e.target.grpname.value;
         const email = e.target.email.value;
         
-        console.log(groupName);
+        console.log(name);
 
         const userGroupDetails = {
-            groupName: groupName,
+            name: name,
             email: email,
             isAdmin:adminTrue.checked === true ? true :false
         }
@@ -94,6 +94,7 @@ async function addUserToGroup(e){
         const token = localStorage.getItem("token");
         const response = await axios.post(`http://localhost:3000/addgroup/adduser`, userGroupDetails, {headers: {"Authorization": token}});
         console.log(response);
+        alert(response.data.message);
 
     }
     catch(err){
@@ -101,3 +102,4 @@ async function addUserToGroup(e){
     }
 
 }
+
