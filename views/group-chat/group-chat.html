@@ -26,34 +26,35 @@
 
 
             </ul>
-       
         
             <ul id="users-list">
 
             </ul>
+            <div class="card-header" id="message-card-header">
+                <!-- Message to : <span></span> -->
+              </div>
+  <ul id="chat-messages">
+
+  </ul>
+  <div id="toast-msg"></div>
+      <!-- <div class="message left" id="right">rahul:i am fine</div> -->
+  </div>
+  
+  </div>
         </div>
-        <div id="list-contcts">
+        <!-- <div id="list-contcts">
             <h4 style="text-align: center; margin-right: 60px;">list of all contacts</h4>
             <ul id="list-of-all-contacts">
 
-            </ul>
+            </ul> -->
         </div>
+        <div class="send">
+            <form id="send-container" onsubmit="chat(event)">
+                 <input type="text" name="group2" id="messageinp" placeholder="Enter Message">
+                 <button class="btn btn-success" type="submit" >Send</button>
+            </form>
     </div>
-    <div class="card-header" id="message-card-header">
-                  <!-- Message to : <span></span> -->
-                </div>
-    <ul id="chat-messages">
-
-    </ul>
-    <div id="toast-msg"></div>
-        <!-- <div class="message left" id="right">rahul:i am fine</div> -->
-    </div>
-    <div class="send">
-        <form id="send-container" onsubmit="chat(event)">
-             <input type="text" name="group2" id="messageinp" placeholder="Enter Message">
-             <button class="btn btn-success" type="submit" >Send</button>
-        </form>
-    </div>
+    
     <script src="./group-chat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>

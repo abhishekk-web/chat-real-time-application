@@ -15,6 +15,7 @@ const groupChatRoute = require('./routes/groupChat');
 const makeGroupRoute = require('./routes/makeGroup');
 const chatRoute = require('./routes/chat');
 const addUserRoute = require('./routes/addUser');
+const removeUserRoute = require('./routes/removeUser');
 
 // Models
 const User = require('./models/user');
@@ -52,7 +53,7 @@ app.use("/chat", chatRoute);
 app.use("/group", makeGroupRoute);
 app.use("/groupchat", groupChatRoute);
 app.use('/addgroup', addUserRoute);
-
+app.use("/removegroup", removeUserRoute);
 
 // we are running our server and database here
 sequelize

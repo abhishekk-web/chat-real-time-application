@@ -103,3 +103,29 @@ async function addUserToGroup(e){
 
 }
 
+async function removeUser(e){
+
+    try{
+
+    e.preventDefault();
+    const name = e.target.removeName.value;
+    const email = e.target.removeEmail.value;
+        
+    console.log(name);
+
+    const removeUserGroupDetails = {
+        name: name,
+        email: email,
+    }
+    console.log(removeUserGroupDetails);
+    const token = localStorage.getItem("token");
+    const response = await axios.post(`http://localhost:3000/removegroup/removeuser`, removeUserGroupDetails, {headers: {"Authorization": token}});
+    console.log(response);
+    alert(response.data.message);
+
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
