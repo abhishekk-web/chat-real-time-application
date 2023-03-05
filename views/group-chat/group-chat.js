@@ -21,6 +21,9 @@ function normalChats(){
 function allGroups () {
 
     groupForChats();
+    setInterval(()=>{
+        getGroupMessages(toUserid);
+    }, 2000);
 
 }
 async function groupForChats(){
@@ -63,13 +66,14 @@ async function chat(e) {
     alert(response.data.message);
 }
 
+let toUserid;
 async function showGroupChats(e){
 
     try {
 
         if(e.target.className == "list-group-item"){
             const name = e.target.textContent;
-        const toUserid =  e.target.children[0].value;
+        toUserid =  e.target.children[0].value;
         const message = `Send message to : ${name } <input type="hidden" id='msg-header-user-id' value=${toUserid}>`
         messageHeader.innerHTML= message
         messages.innerHTML = "";

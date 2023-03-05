@@ -21,7 +21,12 @@ function createGroups(){
 }
 
 function showUsers(){
-    contacts();
+    
+        contacts();
+        setInterval(()=>{
+            getChats(toUserid)
+        },2000)
+ 
 }
 
 async function contacts(){
@@ -70,12 +75,12 @@ async function chat(e){
 }
 
 
-
+let toUserid;
 async function showMessages(e) {
 
     if(e.target.className == "list-group-item"){
         const name = e.target.textContent;
-        const toUserid =  e.target.children[0].value;
+        toUserid =  e.target.children[0].value;
         const message = `Send message to : ${name } <input type="hidden" id='msg-header-user-id' value=${toUserid}>`
         messageHeader.innerHTML= message
         messages.innerHTML = "";
